@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container pt-5">
+        <h1>Create Controller Manually</h1>
+        <ul>
+            <li>Creat a file in a controller folder e.g <code>TestController.php</code></li>
+            <ul>
+                <li>
+                    Add namespace App\Controller;
+                </li>
+                <li>
+                    Import use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+                </li>
+                <li>
+                    Import use Symfony\Component\HttpFoundation\Response;
+                </li>
+                <li>
+                    Import use Symfony\Component\Routing\Attribute\Route;
+                </li>
+
+                <li>
+                    create a class e.g TestController with extends AbstractController
+                </li>
+                <li>
+                    create a method e.g index with return type Response
+                </li>
+                <li>
+                    use Route attribute to define a route e.g "/test" and name "app_test"
+                </li>
+                <li>
+                    use Response to show data
+                </li>
+                <li>
+                    create a twig file in templates/test/index.html.twig that extends the base.html.twig file
+                </li>
+                <li>Test on <a href="http://127.0.0.1:8000/test">http://127.0.0.1:8000/test</a></li>
+            </ul>
+        </ul>
+        <h6 class="pt-3">Controller Code</h6>
+        <div class="code-block">
+            <code>
+                <pre>
+                    
+                    &lt;?php
+                        
+                        namespace App\Controller;
+
+                        use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+                        use Symfony\Component\Routing\Attribute\Route;
+                        use Symfony\Component\HttpFoundation\Response;
+
+                        final class TestController extends AbstractController{
+                            #[Route('test',name:'app_test')]
+                            public function index(){
+                                return new Response('&lth1>testing&lt/h1>');
+                            }
+                        }
+                </pre>
+            </code>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>First Step</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container pt-5">
+        <h1>Project Setup</h1>
+        <h6 class="pt-3">.env</h6>
+        <ol>
+            <li>update database configuration in .env file
+                <ul>
+                    <li>
+                        <code> DATABASE_URL="mysql://root:@127.0.0.1:3306/symfony_crud"</code>
+                    </li>
+                    <li> Run the following command to create the database:
+                        <code>php bin/console doctrine:database:create</code>
+                        <ul>
+                            <li> <h6>What is Doctrine</h6>
+                                <p>
+                                    Doctrine is an Object-Relational Mapper (ORM) for PHP that provides a powerful and flexible way to interact with databases using object-oriented programming principles. It acts as a bridge between the object-oriented domain model of your application and the relational database, allowing developers to work with database records as PHP objects rather than writing raw SQL queries.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Create Model or Entity
+                <ul>
+                    <li>Run the following command to create an entity class:
+                        <code>php bin/console make:entity</code>
+                    </li>
+                    <li>Follow the prompts to define the entity's fields and their types.
+                        <code>
+<pre>
+    Add another property? Enter the property name (or press <return> to stop adding fields):
+    > name
+    Field type (enter ? to see all types) [string]:
+    > string
+    Field length [255]:
+    > 255
+    Can this field be null in the database (nullable) (yes/no) [no]:
+    > no
+    -----
+    Add another property? Enter the property name:
+    > price
+    Field type:
+    > float
+    Nullable? [no]:
+    > no
+    -----
+    Add another property? Enter the property name:
+    > description
+    Field type:
+    > text
+    Nullable? [no]:
+    > yes
+</pre>  
+                        </code>
+                    </li>
+                </ul>
+            </li>
+           <li>
+                After defining the entity, run the following command to create a migration file that will generate the corresponding database table:
+                <code>php bin/console make:migration</code>
+            </li>
+            <li>Run the migration to create the table in the database:
+                <code>php bin/console doctrine:migrations:migrate</code>
+            </li>
+        </ol>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

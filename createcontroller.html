@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container pt-5">
+        <h1>Create Controller By Command</h1>
+        <ul>
+            <li>Open Terminal And Run command</li>
+            <ul>
+                <li><code>php bin/console make:controller HomeController</code>
+                    <ul>
+                        <li>This command create a file in src/Controller/HomeController.php </li>
+                        <li>It create a HomeController final class with extends AbstractController</li>
+                        <li>It create a index method with return render Template and create a named route e.g "/home" and name "app_home"</li>
+                        <li>It create a twig file in templates/home/index.html.twig that extends the base.html.twig file</li>
+                        <li>In Base file it create a blocks like title and body</li>
+                    </ul>
+                </li>
+            </ul>
+        </ul>
+        <h6 class="pt-3">Controller Code</h6>
+        <div class="code-block">
+            <code>
+                <pre>
+                    
+                    &lt;?php
+                        namespace App\Controller;
+
+                        use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+                        use Symfony\Component\HttpFoundation\Response;
+                        use Symfony\Component\Routing\Attribute\Route;
+
+                        final class HomeController extends AbstractController
+                        {
+                            #[Route('/home', name: 'app_home')]
+                            public function index(): Response
+                            {
+                                return $this->render('home/index.html.twig', [
+                                    'controller_name' => 'HomeController',
+                                ]);
+                            }
+                        }
+                </pre>
+            </code>
+        </div>
+        <h6 class="pt-3">Base File Code</h6>
+        <div class="code-block">
+            <code>
+                <pre>
+                    &lt!DOCTYPE html>
+                    &lthtml>
+                        &lthead>
+                            &ltmeta charset="UTF-8">
+                            &lttitle>{% block title %}Welcome!{% endblock %}&lt/title>
+                            &ltlink rel="icon" href="data:image/svg+xml,&ltsvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22>&lttext y=%221.2em%22 font-size=%2296%22>⚫️&lt/text>&lttext y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf&lt/text>&lt/svg>">
+                            {% block stylesheets %}
+                            {% endblock %}
+
+                            {% block javascripts %}
+                                {% block importmap %}{{ importmap('app') }}{% endblock %}
+                            {% endblock %}
+                        &lt/head>
+                        &ltbody>
+                            {% block body %}{% endblock %}
+                        &lt/body>
+                    &lt/html>
+                </pre>
+            </code>
+        </div>
+        
+        <h6 class="pt-3">Index File Code</h6>
+        <div class="code-block">
+            <code>
+                <pre>
+                    
+                    {% extends 'base.html.twig' %}
+
+                    {% block title %}Hello HomeController!{% endblock %}
+
+                    {% block body %}
+                    &ltstyle>
+                        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+                        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+                    &lt/style>
+
+                    &ltdiv class="example-wrapper">
+                        &lth1>Hello {{ controller_name }}! ✅&lt/h1>
+
+                        This friendly message is coming from:
+                        &ltul>
+                            &ltli>Your controller at &ltcode>C:/Users/mohd1/xampp/htdocs/symfony/pro2/src/Controller/HomeController.php&lt/code>&lt/li>
+                            &ltli>Your template at &ltcode>C:/Users/mohd1/xampp/htdocs/symfony/pro2/templates/home/index.html.twig&lt/code>&lt/li>
+                        &lt/ul>
+                    &lt/div>
+                    {% endblock %}
+                </pre>
+            </code>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container pt-5">
+        <h1>Create API</h1>
+        <ul>
+            <li><h6>Create and Run Project</h6>
+                <ol>
+                    <li><code>symfony new API</code></li>
+                    <li><code>cd API</code></li>
+                    <li>Install Required Packages using composer <code>composer require orm doctrine maker serializer</code></li>
+                    <li><code>symfony server:start</code></li>
+                    <li>Goto <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></li>
+                    <li>open same terminal</li>
+                    <li>open folder in vs code<code>code .</code></li>
+                </ol>
+            </li>
+            <li><h6>Connect With DataBase</h6>
+                <ol>
+                    <li>Open <b>.env</b> file</li>
+                    <li>Change <code>DATABASE_URL="mysql://root@127.0.0.1:3306/symfony_API" </code></li>
+                </ol>
+            </li>
+            <li><h6>Create DataBase</h6>
+                <ol>
+                    <li><code>php bin/console doctrine:database:create</code></li>
+                </ol>
+            </li>
+            <li><h6>Create Model OR Entity For Product</h6>
+                <ol>
+                    <li><code>php bin/console make:entity Product</code></li>
+                    <li>
+                        Add following fields
+                        <ul>
+                            <li>name:string</li>
+                            <li>price:float</li>
+                            <li>created_at:datetime_immutable</li>
+                            <li>updated_at:datetime</li>
+                        </ul>
+                    </li>
+                    <li><code>php bin/console make:migration</code></li>
+                    <li><code>php bin/console doctrine:migrations:migrate</code></li>
+                </ol>
+            </li>
+        </ul>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
